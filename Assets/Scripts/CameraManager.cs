@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : SingletonBehaviour<CameraManager>
 {
     public RawImage broadcastScreen;
     public RenderTexture[] renderTextures;
-    public Camera[] cameras;
+    public CameraObject[] cameraObjects;
     public int currentCamera;
 
     // Start is called before the first frame update
