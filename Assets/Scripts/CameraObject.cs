@@ -8,7 +8,14 @@ public class CameraObject : MonoBehaviour
 
     public bool IsObjectVisible(GameObject gameObject)
     {
-        return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), gameObject.GetComponent<MeshRenderer>().bounds);
+        RaycastHit hit;
+        if(GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), gameObject.GetComponent<MeshRenderer>().bounds))
+        {
+            Physics.Raycast(camera.transform.position, gameObject.transform.position - camera.transform.position, out hit, Vector3.Distance(camera.transform.position, gameObject.transform.position));
+            if (hit.transform != gameObject.transform) return false;
+            else return true;
+        }
+        return false;
     }
 
     private void Awake()
