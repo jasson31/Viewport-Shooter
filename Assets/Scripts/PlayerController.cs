@@ -58,5 +58,6 @@ public class PlayerController : MonoBehaviour
         rotationY = Mathf.Clamp(rotationY, -20, 30);
         transform.eulerAngles = new Vector3(0, rotationX, 0);
         mainCamera.transform.eulerAngles = new Vector3(-rotationY, mainCamera.transform.eulerAngles.y, 0);
+        animator.SetFloat("LookAngle", (rotationY + 20) / 50);
     }
 }

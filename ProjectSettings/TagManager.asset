@@ -19,8 +19,8 @@ TagManager:
   - 
   - 
   - Head
-  - PlayerModel
-  - ShootingModel
+  - TPS Object
+  - FPS Object
   - 
   - 
   - 
