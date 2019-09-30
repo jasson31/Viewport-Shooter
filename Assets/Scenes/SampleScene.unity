@@ -162,9 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   broadcastScreen: {fileID: 1473175696}
-  renderTextures:
-  - {fileID: 8400000, guid: 7faa71f617130de4e860321a0ac59e76, type: 2}
-  - {fileID: 8400000, guid: 1e03d3f020eb3874686d5b75ad377d01, type: 2}
+  renderTexture: {fileID: 8400000, guid: 7faa71f617130de4e860321a0ac59e76, type: 2}
   cameraObjects:
   - {fileID: 1085219000}
   - {fileID: 193623050}
