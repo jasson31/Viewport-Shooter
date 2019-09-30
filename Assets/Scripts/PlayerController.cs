@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     Animator animator = null;
     Camera mainCamera = null;
     float rotationX = 0, rotationY = 0, sensitivity = 100, keyInputX, keyInputZ;
-    GameObject leftArm, rightArm;
-
+    
     // Start is called before the first frame update
     void Start()
     {
