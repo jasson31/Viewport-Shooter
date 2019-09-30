@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10, yVelocity = 0, gravity = -20, inputX, inputZ;
+    public float speed = 10, yVelocity = 0, gravity = -20;
     CharacterController characterController = null;
     Animator animator = null;
+    Camera mainCamera = null;
+    float rotationX = 0, rotationY = 0, sensitivity = 100, keyInputX, keyInputZ;
+    GameObject leftArm, rightArm;
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        inputX = Input.GetAxis("Horizontal");
-        inputZ = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(inputX * 0.5f, 0, inputZ);
+        keyInputX = Input.GetAxis("Horizontal");
+        keyInputZ = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(keyInputX * 0.5f, 0, keyInputZ);
         animator.SetBool("isWalking", direction.magnitude != 0);
         bool forward = false, backward = false, left = false, right = false;
-        if (inputZ != 0 || inputX != 0)
+        if (keyInputZ != 0 || keyInputX != 0)
         {
-            if (Mathf.Abs(inputZ) > Mathf.Abs(inputX))
+            if (Mathf.Abs(keyInputZ) > Mathf.Abs(keyInputX))
             {
-                if (inputZ > 0) forward = true;
+                if (keyInputZ > 0) forward = true;
                 else backward = true;
             }
             else
             {
-                if (inputX > 0) right = true;
+                if (keyInputX > 0) right = true;
                 else left = true;
             }
         }
@@ -48,11 +52,11 @@ public class PlayerController : MonoBehaviour
 
         float mouseMoveValueX = Input.GetAxis("Mouse X");
         float mouseMoveValueY = Input.GetAxis("Mouse Y");
-        rotationX += mouseMoveValueX * 100 * Time.deltaTime;
-        rotationY += mouseMoveValueY * 100 * Time.deltaTime;
+        rotationX += mouseMoveValueX * Time.deltaTime * sensitivity;
+        rotationY += mouseMoveValueY * Time.deltaTime * sensitivity;
 
-        rotationY = Mathf.Clamp(rotationY, -20, 40);
-        transform.eulerAngles = new Vector3(-rotationY, rotationX, 0);
+        rotationY = Mathf.Clamp(rotationY, -20, 30);
+        transform.eulerAngles = new Vector3(0, rotationX, 0);
+        mainCamera.transform.eulerAngles = new Vector3(-rotationY, mainCamera.transform.eulerAngles.y, 0);
     }
-    float rotationX = 0, rotationY = 0;
 }
