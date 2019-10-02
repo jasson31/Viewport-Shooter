@@ -59,10 +59,10 @@ public class PlayerController : MonoBehaviour
         float mouseMoveValueY = Input.GetAxis("Mouse Y");
         rotationX += mouseMoveValueX * Time.deltaTime * sensitivity;
         rotationY += mouseMoveValueY * Time.deltaTime * sensitivity;
-        rotationY = Mathf.Clamp(rotationY, -20, 30);
+        rotationY = Mathf.Clamp(rotationY, -50, 30);
         transform.eulerAngles = new Vector3(0, rotationX, 0);
         mainCamera.transform.eulerAngles = new Vector3(-rotationY, mainCamera.transform.eulerAngles.y, 0);
-        playerAnimator.SetFloat("LookAngle", (rotationY + 20) / 50);
+        playerAnimator.SetFloat("LookAngle", (rotationY + 50) / 80);
 
         //Shoot
         if(Input.GetMouseButtonDown(0))

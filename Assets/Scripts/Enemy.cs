@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    private void OnTriggerEnter(Collider other)
+    public void Die()
     {
-        if (other.tag == "Bullet")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-
+        Debug.Log("으악");
     }
+    
 
     // Start is called before the first frame update
     void Start()
