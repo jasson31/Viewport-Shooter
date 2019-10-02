@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,6 +132,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3250f0d9de6ac4da013fc471d424ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &244466826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244466828}
+  - component: {fileID: 244466827}
+  m_Layer: 0
+  m_Name: Bullet Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &244466827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244466826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f78561e003d4c4bafab49ff289a8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 5435403860393125883, guid: 2a1b70e5cd9a04442916a18888c9d189, type: 3}
+--- !u!4 &244466828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244466826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &281461886
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +311,12 @@ PrefabInstance:
       objectReference: {fileID: 8400000, guid: 1e03d3f020eb3874686d5b75ad377d01, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 324496b72938af541becd04f27795108, type: 3}
+--- !u!1 &392668389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8643130408348540138, guid: c987e7763d4daa74096f66934a875b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 1407016014835251094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &401942722
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +812,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3250f0d9de6ac4da013fc471d424ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &1098925338
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Explosion
+  m_Shader: {fileID: 4800000, guid: 1ffd39b3e33a04094a482b549da5c0f7, type: 3}
+  m_ShaderKeywords: OCTAVES_4 QUALITY_HIGH SCATTERING_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _3DNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4648634f8231b4bf0860b6a2b4f6fadc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampTex:
+        m_Texture: {fileID: 2800000, guid: de25a418e52274482b51702fff566bcd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 1
+    - _Frequency: 1
+    - _Heat: 1
+    - _Radius: -1.5073891
+    - _ScrollSpeed: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _SpherePos: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1473175694
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +928,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473175694}
   m_CullTransparentMesh: 0
+--- !u!1 &1671418605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8643130408800167095, guid: c987e7763d4daa74096f66934a875b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 1407016014835251094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1728472016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -903,6 +1003,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 324496b72938af541becd04f27795108, type: 3}
+--- !u!21 &1846507322
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Explosion
+  m_Shader: {fileID: 4800000, guid: 1ffd39b3e33a04094a482b549da5c0f7, type: 3}
+  m_ShaderKeywords: OCTAVES_4 QUALITY_HIGH SCATTERING_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _3DNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4648634f8231b4bf0860b6a2b4f6fadc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RampTex:
+        m_Texture: {fileID: 2800000, guid: de25a418e52274482b51702fff566bcd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 1
+    - _Frequency: 1
+    - _Heat: 1
+    - _Radius: -1.5073892
+    - _ScrollSpeed: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _SpherePos: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1407016014835251094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,5 +1114,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5176482694155763346, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: tpsGun
+      value: 
+      objectReference: {fileID: 392668389}
+    - target: {fileID: 5176482694155763346, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: fpsGun
+      value: 
+      objectReference: {fileID: 1671418605}
+    - target: {fileID: 3396782058401135582, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6868dcf92acce0643a04fbdc06cbf818, type: 2}
+    - target: {fileID: 3396782060130501507, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6868dcf92acce0643a04fbdc06cbf818, type: 2}
+    - target: {fileID: 5199535431438765404, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1098925338}
+    - target: {fileID: 5199535432058270977, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1846507322}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c987e7763d4daa74096f66934a875b65, type: 3}
