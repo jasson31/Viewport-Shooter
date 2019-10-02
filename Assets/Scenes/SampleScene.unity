@@ -220,7 +220,7 @@ MonoBehaviour:
   broadcastScreen: {fileID: 1473175696}
   renderTexture: {fileID: 8400000, guid: 7faa71f617130de4e860321a0ac59e76, type: 2}
   cameraObjects:
-  - {fileID: 256538396}
+  - {fileID: 340870945}
   - {fileID: 256538396}
   - {fileID: 966709723}
   - {fileID: 1613281064}
@@ -241,6 +241,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &340870945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8913314136619696708, guid: c987e7763d4daa74096f66934a875b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 1407016014835251094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3250f0d9de6ac4da013fc471d424ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &401942722
 GameObject:
   m_ObjectHideFlags: 0
