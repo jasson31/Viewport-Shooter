@@ -1874,5 +1874,30 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4310908282864100700, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.055
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577770574580931616, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577770574580931616, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577770574580931616, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: field of view
+      value: 26.991467
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577770574580931616, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 311
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c987e7763d4daa74096f66934a875b65, type: 3}
