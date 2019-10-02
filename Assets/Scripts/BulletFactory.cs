@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletFactory : SingletonBehaviour<BulletFactory>
 {
     public GameObject bullet;
-    float bulletSpeed = 20;
+    float bulletSpeed = 50;
 
     public GameObject MakeBullet(Vector3 pos, Quaternion rotation, Vector3 direction)
     {

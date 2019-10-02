@@ -7,8 +7,9 @@ TagManager:
   - Weapon
   - SecondCamera
   - LevelPart
-  - Dummie
   - Bullet
+  - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
