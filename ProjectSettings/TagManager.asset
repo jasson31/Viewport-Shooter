@@ -6,9 +6,9 @@ TagManager:
   tags:
   - Weapon
   - SecondCamera
-  - BulletSpawn
   - LevelPart
   - Dummie
+  - Bullet
   layers:
   - Default
   - TransparentFX

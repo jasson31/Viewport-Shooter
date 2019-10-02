@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 5176482694155763346}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,6 +1198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6190772955180507525}
+  fpsGun: {fileID: 8643130408800167095}
+  tpsGun: {fileID: 8643130408348540138}
   speed: 10
   yVelocity: 0
   gravity: -20
@@ -1684,7 +1686,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4731533372864583332}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &6284870877596024888
 GameObject:
@@ -2606,16 +2608,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 397524214576516524}
     m_Modifications:
-    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Name
-      value: TPS Gun
-      objectReference: {fileID: 0}
-    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 468171077380367387, guid: 5611a96bce05be3479439014902bf677,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2671,7 +2663,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 92.91701
       objectReference: {fileID: 0}
-    - target: {fileID: 8046046771089145687, guid: 5611a96bce05be3479439014902bf677,
+    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
+        type: 3}
+      propertyPath: m_Name
+      value: TPS Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -2686,17 +2683,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 547010745957290096, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 449971237084548484, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235978611677376809, guid: 5611a96bce05be3479439014902bf677,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -2706,8 +2693,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7563026864802548065, guid: 5611a96bce05be3479439014902bf677,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6868dcf92acce0643a04fbdc06cbf818, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5611a96bce05be3479439014902bf677, type: 3}
+--- !u!1 &8643130408348540138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
+    type: 3}
+  m_PrefabInstance: {fileID: 5176482694207720162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4731533373316214521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 468171077380367387, guid: 5611a96bce05be3479439014902bf677,
@@ -2721,16 +2719,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5176482695643323547}
     m_Modifications:
-    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Name
-      value: FPS Gun
-      objectReference: {fileID: 0}
-    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 468171077380367387, guid: 5611a96bce05be3479439014902bf677,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2786,7 +2774,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.83
       objectReference: {fileID: 0}
-    - target: {fileID: 8046046771089145687, guid: 5611a96bce05be3479439014902bf677,
+    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
+        type: 3}
+      propertyPath: m_Name
+      value: FPS Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
         type: 3}
       propertyPath: m_Layer
       value: 10
@@ -2801,17 +2794,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 547010745957290096, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 449971237084548484, guid: 5611a96bce05be3479439014902bf677,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4235978611677376809, guid: 5611a96bce05be3479439014902bf677,
         type: 3}
       propertyPath: m_Layer
       value: 10
@@ -2821,8 +2804,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7563026864802548065, guid: 5611a96bce05be3479439014902bf677,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6868dcf92acce0643a04fbdc06cbf818, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5611a96bce05be3479439014902bf677, type: 3}
+--- !u!1 &8643130408800167095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3468931447237678600, guid: 5611a96bce05be3479439014902bf677,
+    type: 3}
+  m_PrefabInstance: {fileID: 5176482695666053823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4731533372864583332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 468171077380367387, guid: 5611a96bce05be3479439014902bf677,

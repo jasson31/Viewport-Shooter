@@ -17,20 +17,18 @@ public class CameraManager : SingletonBehaviour<CameraManager>
     {
         renderTextures = new RenderTexture[6];
         for (int i = 0; i < 6; i++) renderTextures[i] = new RenderTexture(renderTexture);
-        for(int i = 0; i < 2; i++) cameraObjects[i].camera.targetTexture = renderTextures[i];
+        for(int i = 0; i < 6; i++) cameraObjects[i].camera.targetTexture = renderTextures[i];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentCamera = 0;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentCamera = 1;
-        }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) currentCamera = 0;
+        else if(Input.GetKeyDown(KeyCode.Alpha2)) currentCamera = 1;
+        else if(Input.GetKeyDown(KeyCode.Alpha3)) currentCamera = 2;
+        else if(Input.GetKeyDown(KeyCode.Alpha4)) currentCamera = 3;
+        else if(Input.GetKeyDown(KeyCode.Alpha5)) currentCamera = 4;
+        else if(Input.GetKeyDown(KeyCode.Alpha6)) currentCamera = 5;
         broadcastScreen.texture = cameraObjects[currentCamera].camera.targetTexture;
     }
 }

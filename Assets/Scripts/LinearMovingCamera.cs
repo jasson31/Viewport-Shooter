@@ -33,10 +33,7 @@ public class LinearMovingCamera : MonoBehaviour
         if (other.tag.Contains("Player"))
         {
             GetComponent<Collider>().enabled = false;
-            foreach (SpawnInfo spwn in GetComponentsInChildren<SpawnInfo>())
-            {
-                initiateMove = true;
-            }
+            initiateMove = true;
         }
     }
 }
