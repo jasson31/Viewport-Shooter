@@ -8,7 +8,15 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("으악");
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Floor")
+        {
+            GetComponent<Animator>().SetTrigger("Landed");
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
