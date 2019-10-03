@@ -11,7 +11,7 @@ public class BulletFactory : SingletonBehaviour<BulletFactory>
     {
         GameObject newBullet = Instantiate(bullet, pos, rotation);
         newBullet.transform.Find("Bullet (HQ)").GetComponent<Rigidbody>().velocity = direction.normalized * bulletSpeed;
-        newBullet.transform.Find("Shell (HQ)").transform.localPosition += new Vector3(0, -0.1f, 0.05f);
+        newBullet.transform.Find("Shell (HQ)").transform.localPosition += new Vector3(0, -0.0475f, 0.015f);
 
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5 * bulletSpeed))
