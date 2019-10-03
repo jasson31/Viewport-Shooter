@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject firePoint, fpsGun, tpsGun;
+    public ParticleSystem fpsMuzzleFlash, tpsMuzzleFlash;
     public float speed = 10, yVelocity = 0, gravity = -20;
     CharacterController characterController = null;
     Animator playerAnimator, tpsGunAnimator, fpsGunAnimator;
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             BulletFactory.inst.MakeBullet(firePoint.transform.position, firePoint.transform.rotation, firePoint.transform.up);
+            tpsMuzzleFlash.Play();
+            fpsMuzzleFlash.Play();
             fpsGunAnimator.SetTrigger("Fire");
             tpsGunAnimator.SetTrigger("Fire");
         }
