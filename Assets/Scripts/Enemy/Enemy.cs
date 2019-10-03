@@ -5,25 +5,28 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Transform target;
+    public bool isDead = false;
+    Animator animator;
 
     public void Die()
     {
-        Debug.Log("으악");
+        isDead = true;
+        animator.SetTrigger("Death");
+        Destroy(gameObject, 2);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Floor")
         {
-            GetComponent<Animator>().SetTrigger("Landed");
+            animator.SetTrigger("Landed");
         }
     }
-
 
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
