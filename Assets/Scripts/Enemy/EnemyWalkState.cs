@@ -18,8 +18,8 @@ public class EnemyWalkState : StateMachineBehaviour
     {
         Vector3 dir = target.position - animator.transform.position;
         float distance = dir.magnitude;
-        if (distance >= 10) animator.SetTrigger("Idle");
-        else if (distance < 1) animator.SetTrigger("Attack");
+        if (distance >= 10) animator.SetBool("Walk", false);
+        else if (distance < 1) animator.SetBool("Attack", true);
         else
         {
             dir.y = 0;

@@ -18,14 +18,14 @@ public class EnemyAttackState : StateMachineBehaviour
     {
         Vector3 dir = target.position - animator.transform.position;
         float distance = dir.magnitude;
-        if (distance > 1) animator.SetTrigger("Walk");
+        if (distance > 1) animator.SetBool("Attack", false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
