@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -37,9 +35,13 @@ public class ScoreManager : MonoBehaviour
             int decrease = 0;
             if (playTime >= missionTime) decBySec += decBySecEnd;
             decrease += decBySec;
-            if (cameraManager.currentCamera != 0 && cameraManager.cameraObjects[cameraManager.currentCamera].IsObjectVisible(player)) decrease += decBySecEepty;
+            if (cameraManager.currentCamera != 0 && !cameraManager.cameraObjects[cameraManager.currentCamera].IsObjectVisible(player))
+            {
+                decrease += decBySecEepty;
+                Debug.Log("Player Off");
+            }
             if (decrease >= 100) ScoreNotice(-decrease);
-            score -= decrease;
+            score = Mathf.Max(0, score - decrease);
             Debug.Log("Score : " + score);
         }
     }
@@ -54,9 +56,21 @@ public class ScoreManager : MonoBehaviour
     {
         CameraObject currentCamera = cameraManager.cameraObjects[cameraManager.currentCamera];
         int increase = 0;
-        if (currentCamera.IsObjectVisible(enemy)) increase += bodyScore;
-        if (currentCamera.IsObjectVisible(player)) increase += playerScore;
-        if (currentCamera.IsObjectVisible(playerHead)) increase += faceScore;
+        if (currentCamera.IsObjectVisible(enemy))
+        {
+            Debug.Log("Enemy On");
+            increase += bodyScore;
+        }
+        if (currentCamera.IsObjectVisible(player))
+        {
+            Debug.Log("Player On");
+            increase += playerScore;
+        }
+        if (currentCamera.IsObjectVisible(playerHead))
+        {
+            Debug.Log("Head On");
+            increase += faceScore;
+        }
 
         if (increase > 0) ScoreNotice(increase);
         score += increase;

@@ -6,14 +6,17 @@ public class CameraObject : MonoBehaviour
 {
     public new Camera camera;
 
-    public bool IsObjectVisible(GameObject gameObject)
+    public bool IsObjectVisible(GameObject _gameObject)
     {
         RaycastHit hit;
-        if(GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), gameObject.GetComponent<MeshRenderer>().bounds))
+        if (_gameObject.GetComponent<Renderer>())
         {
-            Physics.Raycast(camera.transform.position, gameObject.transform.position - camera.transform.position, out hit, Vector3.Distance(camera.transform.position, gameObject.transform.position));
-            if (hit.transform != gameObject.transform) return false;
-            else return true;
+            if (GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), _gameObject.GetComponent<Renderer>().bounds))
+            {
+                Physics.Raycast(camera.transform.position, _gameObject.transform.position - camera.transform.position, out hit, Vector3.Distance(camera.transform.position, _gameObject.transform.position));
+                if (hit.transform != _gameObject.transform) return false;
+                else return true;
+            }
         }
         return false;
     }
