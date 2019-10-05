@@ -24,7 +24,7 @@ public class EnemyIdleState : StateMachineBehaviour
         if (distance < 10)
         {
             stateTime = 0;
-            animator.SetTrigger("Walk");
+            animator.SetBool("Walk", true);
         }
     }
 

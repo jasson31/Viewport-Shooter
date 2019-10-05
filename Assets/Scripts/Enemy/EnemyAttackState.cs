@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWalkState : StateMachineBehaviour
+public class EnemyAttackState : StateMachineBehaviour
 {
     Transform target;
     float speed = 1;
@@ -18,21 +18,14 @@ public class EnemyWalkState : StateMachineBehaviour
     {
         Vector3 dir = target.position - animator.transform.position;
         float distance = dir.magnitude;
-        if (distance >= 10) animator.SetBool("Walk", false);
-        else if (distance < 1) animator.SetBool("Attack", true);
-        else
-        {
-            dir.y = 0;
-            animator.transform.position += dir * speed * Time.deltaTime / distance;
-            animator.transform.rotation = Quaternion.Lerp(animator.transform.rotation, Quaternion.LookRotation(dir), 20 * Time.deltaTime);
-        }
+        if (distance > 1) animator.SetBool("Attack", false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
