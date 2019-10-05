@@ -6,14 +6,15 @@ public class CameraObject : MonoBehaviour
 {
     public new Camera camera;
 
-    public bool IsObjectVisible(GameObject gameObject)
+    public bool IsObjectVisible(GameObject _gameObject)
     {
-        RaycastHit hit;
-        if(GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), gameObject.GetComponent<MeshRenderer>().bounds))
+        Vector3 screenPoint = camera.WorldToViewportPoint(_gameObject.transform.position);
+        bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+        if (onScreen)
         {
-            Physics.Raycast(camera.transform.position, gameObject.transform.position - camera.transform.position, out hit, Vector3.Distance(camera.transform.position, gameObject.transform.position));
-            if (hit.transform != gameObject.transform) return false;
-            else return true;
+            RaycastHit hit;
+            if(Physics.Raycast(camera.transform.position, _gameObject.transform.position + new Vector3(0, 0.5f, 0) - camera.transform.position, out hit))
+                if (hit.transform == _gameObject.transform) return true;
         }
         return false;
     }
