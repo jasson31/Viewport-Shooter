@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        target.GetComponent<PlayerController>().StartCoroutine(target.GetComponent<PlayerController>().TurnHitUIOn());
+        PlayerController.inst.StartCoroutine(PlayerController.inst.TurnHitUIOn());
     }
 
     private void OnCollisionEnter(Collision collision)
