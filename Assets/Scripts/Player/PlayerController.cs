@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CameraManager.inst.cameraObjects[CameraManager.inst.currentCamera].IsObjectVisible(gameObject));
         //Player move
         keyInputX = Input.GetAxis("Horizontal");
         keyInputZ = Input.GetAxis("Vertical");
