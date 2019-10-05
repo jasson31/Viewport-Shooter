@@ -2156,6 +2156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 8285983452294706650, guid: ed864355308c0fc4daf88e1134583a49,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8285983452294706649, guid: ed864355308c0fc4daf88e1134583a49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2236,6 +2241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyTrigger (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285983452294706650, guid: ed864355308c0fc4daf88e1134583a49,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8285983452294706649, guid: ed864355308c0fc4daf88e1134583a49,
         type: 3}
@@ -2343,6 +2353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyTrigger (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8285983452294706650, guid: ed864355308c0fc4daf88e1134583a49,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8285983452294706649, guid: ed864355308c0fc4daf88e1134583a49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2448,6 +2463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285983452294706650, guid: ed864355308c0fc4daf88e1134583a49,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8285983452294706649, guid: ed864355308c0fc4daf88e1134583a49,
         type: 3}
@@ -2619,6 +2639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyTrigger (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285983452294706650, guid: ed864355308c0fc4daf88e1134583a49,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8285983452294706649, guid: ed864355308c0fc4daf88e1134583a49,
         type: 3}
