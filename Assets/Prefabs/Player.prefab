@@ -1200,6 +1200,8 @@ MonoBehaviour:
   firePoint: {fileID: 6190772955180507525}
   fpsGun: {fileID: 8643130408800167095}
   tpsGun: {fileID: 8643130408348540138}
+  headMesh: {fileID: 4893561952489224285}
+  bodyMesh: {fileID: 8706325498172689612}
   fpsMuzzleFlash: {fileID: 8104122397632713466}
   tpsMuzzleFlash: {fileID: 4188255503734327097}
   speed: 10
@@ -1700,7 +1702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4603969450152489563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fire_point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2713,7 +2715,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2132396828408016552, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
+    - target: {fileID: 2132396828408016544, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132396828408016546, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -2723,17 +2730,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2132396828408016544, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
+    - target: {fileID: 2132396828408016552, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2132396828408016554, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2132396828408016546, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -2849,6 +2851,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 982131037997210907, guid: 5611a96bce05be3479439014902bf677,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5611a96bce05be3479439014902bf677, type: 3}
 --- !u!1 &8643130408348540138 stripped
@@ -2960,6 +2967,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 982131037997210907, guid: 5611a96bce05be3479439014902bf677,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5611a96bce05be3479439014902bf677, type: 3}
 --- !u!1 &8643130408800167095 stripped
@@ -3067,6 +3079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SecurityCam_1
       objectReference: {fileID: 0}
+    - target: {fileID: 9218998720824745934, guid: 324496b72938af541becd04f27795108,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5308388979758656989, guid: 324496b72938af541becd04f27795108,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3136,6 +3153,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576934698914182909, guid: 324496b72938af541becd04f27795108,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382675876135881652, guid: 324496b72938af541becd04f27795108,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8382675876135881652, guid: 324496b72938af541becd04f27795108,
         type: 3}

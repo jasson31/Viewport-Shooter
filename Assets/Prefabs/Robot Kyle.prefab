@@ -1529,6 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba7f7aad044c0449afbf3e2284cc2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh: {fileID: 434247816442096746}
   isDead: 0
 --- !u!1 &8396388205861750676
 GameObject:

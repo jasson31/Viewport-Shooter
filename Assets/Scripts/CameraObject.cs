@@ -6,18 +6,25 @@ public class CameraObject : MonoBehaviour
 {
     public new Camera camera;
 
-    public bool IsObjectVisible(GameObject _gameObject)
+    public bool IsVisible(GameObject meshObject, GameObject colliderObject, float yOffset = 0)
     {
-        Vector3 screenPoint = camera.WorldToViewportPoint(_gameObject.transform.position);
-        bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+        bool onScreen = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), meshObject.GetComponent<Renderer>().bounds);
         if (onScreen)
         {
             RaycastHit hit;
-            if(Physics.Raycast(camera.transform.position, _gameObject.transform.position + new Vector3(0, 0.5f, 0) - camera.transform.position, out hit))
-                if (hit.transform == _gameObject.transform) return true;
+            LayerMask layerMask = CameraManager.inst.currentCamera == 0 ? 
+                ~(1 << LayerMask.NameToLayer("Head") | 1 << LayerMask.NameToLayer("TPS Player") | 1 << LayerMask.NameToLayer("FPS Player") | 1 << LayerMask.NameToLayer("Ignore Raycast")) :
+                ~(1 << LayerMask.NameToLayer("Ignore Raycast"));
+            float distance = Vector3.Distance(colliderObject.transform.position + new Vector3(0, yOffset, 0), camera.transform.position);
+            if (Physics.Raycast(camera.transform.position, colliderObject.transform.position + new Vector3(0, yOffset, 0) - camera.transform.position, out hit, distance, layerMask))
+            {
+                if (hit.transform == colliderObject.transform) return true;
+            }
+            else return true;
         }
         return false;
     }
+
 
     private void Awake()
     {
