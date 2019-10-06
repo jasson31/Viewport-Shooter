@@ -23,6 +23,11 @@ public class ScoreManager : MonoBehaviour
     public int score;
     int bestScore;
 
+    public Text timeLimitText;
+    public Text timeCounterText;
+    public Color befTimeColor;
+    public Color aftTimeColor;
+
     public int initScore = 500;
     public int decBySec = 10;
     public int decBySecEnd = 5;
@@ -43,6 +48,7 @@ public class ScoreManager : MonoBehaviour
     {
         scoreHistory = new List<int>();
         ScoreInit();
+        timeLimitText.text = "제한시간\n" + StringByTime(missionTime);
     }
     void Update()
     {
@@ -66,6 +72,8 @@ public class ScoreManager : MonoBehaviour
             bestScore = Mathf.Max(bestScore, score);
             SetGraph();
         }
+        timeCounterText.text = StringByTime(playTime);
+        timeCounterText.color = (playTime < missionTime) ? befTimeColor : aftTimeColor;
     }
 
     public void ScoreInit()
@@ -132,5 +140,11 @@ public class ScoreManager : MonoBehaviour
     public void ScoreNotice(int scoreDelta)
     {
         Debug.Log("Notice : " + scoreDelta);
+    }
+
+    public string StringByTime(float time)
+    {
+        int _time = Mathf.FloorToInt(time);
+        return (_time / 60) + ":" + string.Format("{0:D2}", (_time % 60)); 
     }
 }
