@@ -18,6 +18,8 @@ public class EnemyAttackState : StateMachineBehaviour
         Vector3 dir = target.position - animator.transform.position;
         float distance = dir.magnitude;
         if (distance > 1) animator.SetBool("Attack", false);
+        dir.y = 0;
+        animator.transform.rotation = Quaternion.Lerp(animator.transform.rotation, Quaternion.LookRotation(dir), 20 * Time.deltaTime);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
