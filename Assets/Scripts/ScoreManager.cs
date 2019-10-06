@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
 public class ScoreManager : MonoBehaviour
@@ -10,6 +11,9 @@ public class ScoreManager : MonoBehaviour
     public RectTransform bestLine;
     public Color enabledStar;
     public Color disabledStar;
+    public Image[] starImage;
+
+    public Sprite[] starSprite;
 
     public int ceilingScore;
 
@@ -90,6 +94,7 @@ public class ScoreManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             goalLine[i].GetComponent<UILineRenderer>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
+            starImage[i].sprite = (goalScore[i] <= bestScore) ? starSprite[1] : starSprite[0];
         }
         bestLine.anchoredPosition = new Vector2(0, GetYByScore(bestScore));
         scoreLine.Points = list.ToArray();
