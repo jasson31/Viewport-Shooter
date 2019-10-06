@@ -41,6 +41,11 @@ public class ScoreManager : MonoBehaviour
     float playTime = 0f;
     public float missionTime = 60f;
 
+    public GameObject noticePrefab;
+    public RectTransform noticeField;
+    public Color posNoticeColor;
+    public Color negNoticeColor;
+
     List<int> scoreHistory;
 
     private void Start()
@@ -64,7 +69,7 @@ public class ScoreManager : MonoBehaviour
                 decrease += decBySecEepty;
                 //Debug.Log("Player Off");
             }
-            if (decrease >= 100) ScoreNotice(-decrease);
+            if (decrease >= 50) ScoreNotice(-decrease);
             score = Mathf.Max(0, score - decrease);
             scoreHistory.Add(score);
             while (scoreHistory.Count > 31) scoreHistory.RemoveAt(0);
@@ -121,17 +126,14 @@ public class ScoreManager : MonoBehaviour
         int increase = 0;
         if (currentCamera.IsVisible(enemy.GetComponent<Enemy>().mesh, enemy, 1.5f))
         {
-            Debug.Log("Enemy On");
             increase += bodyScore;
         }
         if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f))
         {
-            Debug.Log("Player On");
             increase += playerScore;
         }
         if (currentCamera.IsVisible(player.headMesh, player.gameObject, 1.6f))
         {
-            Debug.Log("Head On");
             increase += faceScore;
         }
 
@@ -141,7 +143,21 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreNotice(int scoreDelta)
     {
-        Debug.Log("Notice : " + scoreDelta);
+        GameObject obj = Instantiate(noticePrefab, noticeField);
+        Text text = obj.GetComponent<Text>();
+
+        obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(0, noticeField.rect.width), Random.Range(0, noticeField.rect.height));
+
+        if (scoreDelta > 0)
+        {
+            text.text = "흥미진진\n+" + scoreDelta;
+            text.color = posNoticeColor;
+        }
+        else
+        {
+            text.text = "지루함\n" + scoreDelta;
+            text.color = negNoticeColor;
+        }
     }
 
     public string StringByTime(float time)
