@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,12 +132,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3250f0d9de6ac4da013fc471d424ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &243042046 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4722430267544541794, guid: c987e7763d4daa74096f66934a875b65,
+--- !u!114 &243042048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5176482694155763346, guid: c987e7763d4daa74096f66934a875b65,
     type: 3}
   m_PrefabInstance: {fileID: 1407016014835251094}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6585ca16204eb7c4d84e3798548628bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &244466826
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraManager: {fileID: 281461887}
-  player: {fileID: 243042046}
-  playerHead: {fileID: 243042046}
+  player: {fileID: 243042048}
   score: 0
   initScore: 500
   decBySec: 10
@@ -983,6 +988,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190772955180507525, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365956958099877796, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365956957377189881, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 975088584857065295, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465321492352335484, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 445149184382419765, guid: c987e7763d4daa74096f66934a875b65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c987e7763d4daa74096f66934a875b65, type: 3}

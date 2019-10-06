@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject firePoint, fpsGun, tpsGun;
+    public GameObject headMesh, bodyMesh;
     public ParticleSystem fpsMuzzleFlash, tpsMuzzleFlash;
     public float speed = 10, yVelocity = 0, gravity = -20;
     CharacterController characterController = null;
     Animator playerAnimator, tpsGunAnimator, fpsGunAnimator;
     Camera mainCamera = null;
     float rotationX = 0, rotationY = 0, sensitivity = 100, keyInputX, keyInputZ;
-    
+
     // Start is called before the first frame update
     void Start()
     {

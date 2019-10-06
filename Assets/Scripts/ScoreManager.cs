@@ -3,8 +3,7 @@
 public class ScoreManager : MonoBehaviour
 {
     public CameraManager cameraManager;
-    public GameObject player;
-    public GameObject playerHead;
+    public PlayerController player;
     public int score;
 
     public int initScore = 500;
@@ -35,14 +34,14 @@ public class ScoreManager : MonoBehaviour
             int decrease = 0;
             if (playTime >= missionTime) decBySec += decBySecEnd;
             decrease += decBySec;
-            if (cameraManager.currentCamera != 0 && !cameraManager.cameraObjects[cameraManager.currentCamera].IsObjectVisible(player))
+            if (cameraManager.currentCamera != 0 && !cameraManager.cameraObjects[cameraManager.currentCamera].IsVisible(player.bodyMesh, player.gameObject, 0.7f))
             {
                 decrease += decBySecEepty;
-                Debug.Log("Player Off");
+                //Debug.Log("Player Off");
             }
             if (decrease >= 100) ScoreNotice(-decrease);
             score = Mathf.Max(0, score - decrease);
-            Debug.Log("Score : " + score);
+            //Debug.Log("Score : " + score);
         }
     }
 
@@ -56,17 +55,17 @@ public class ScoreManager : MonoBehaviour
     {
         CameraObject currentCamera = cameraManager.cameraObjects[cameraManager.currentCamera];
         int increase = 0;
-        if (currentCamera.IsObjectVisible(enemy))
+        if (currentCamera.IsVisible(enemy.GetComponent<Enemy>().mesh, enemy, 1.5f))
         {
             Debug.Log("Enemy On");
             increase += bodyScore;
         }
-        if (currentCamera.IsObjectVisible(player))
+        if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f))
         {
             Debug.Log("Player On");
             increase += playerScore;
         }
-        if (currentCamera.IsObjectVisible(playerHead))
+        if (currentCamera.IsVisible(player.headMesh, player.gameObject, 1.6f))
         {
             Debug.Log("Head On");
             increase += faceScore;
