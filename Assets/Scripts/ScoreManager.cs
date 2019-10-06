@@ -85,6 +85,7 @@ public class ScoreManager : MonoBehaviour
         for(int i = 0; i<3; i++)
         {
             goalLine[i].anchoredPosition = new Vector2(0, GetYByScore(goalScore[i]));
+            goalLine[i].GetComponentInChildren<Text>().text = goalScore[i].ToString();
         }
         bestScore = score;
         SetGraph();
@@ -102,9 +103,11 @@ public class ScoreManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             goalLine[i].GetComponent<UILineRenderer>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
+            goalLine[i].GetComponentInChildren<Text>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
             starImage[i].sprite = (goalScore[i] <= bestScore) ? starSprite[1] : starSprite[0];
         }
         bestLine.anchoredPosition = new Vector2(0, GetYByScore(bestScore));
+        bestLine.GetComponentInChildren<Text>().text = bestScore.ToString();
         scoreLine.Points = list.ToArray();
     }
 
