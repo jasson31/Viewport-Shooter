@@ -12,7 +12,10 @@ public class RotateMovingCamera : MonoBehaviour
 
     void Update()
     {
+        float befAngle = transform.eulerAngles.y;
+
         transform.LookAt(player.transform);
-        transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
+        
+        transform.eulerAngles = new Vector3(0,Mathf.LerpAngle(befAngle, transform.eulerAngles.y, 0.05f),0);
     }
 }

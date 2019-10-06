@@ -1,10 +1,31 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 public class ScoreManager : MonoBehaviour
 {
+    public RectTransform graphRect;
+    public UILineRenderer scoreLine;
+    public RectTransform[] goalLine;
+    public RectTransform bestLine;
+    public Color enabledStar;
+    public Color disabledStar;
+    public Image[] starImage;
+
+    public Sprite[] starSprite;
+
+    public int ceilingScore;
+
     public CameraManager cameraManager;
     public PlayerController player;
     public int score;
+    int bestScore;
+
+    public Text timeLimitText;
+    public Text timeCounterText;
+    public Color befTimeColor;
+    public Color aftTimeColor;
 
     public int initScore = 500;
     public int decBySec = 10;
@@ -20,9 +41,13 @@ public class ScoreManager : MonoBehaviour
     float playTime = 0f;
     public float missionTime = 60f;
 
+    List<int> scoreHistory;
+
     private void Start()
     {
+        scoreHistory = new List<int>();
         ScoreInit();
+        timeLimitText.text = "제한시간\n" + StringByTime(missionTime);
     }
     void Update()
     {
@@ -41,14 +66,53 @@ public class ScoreManager : MonoBehaviour
             }
             if (decrease >= 100) ScoreNotice(-decrease);
             score = Mathf.Max(0, score - decrease);
-            //Debug.Log("Score : " + score);
+            scoreHistory.Add(score);
+            while (scoreHistory.Count > 31) scoreHistory.RemoveAt(0);
+            bestScore = Mathf.Max(bestScore, score);
+            SetGraph();
         }
+        timeCounterText.text = StringByTime(playTime);
+        timeCounterText.color = (playTime < missionTime) ? befTimeColor : aftTimeColor;
     }
 
     public void ScoreInit()
     {
         score = initScore;
         playTime = 0f;
+        scoreHistory = new List<int>();
+        for (int i = 0; i <= 30; i++) scoreHistory.Add(score);
+        for(int i = 0; i<3; i++)
+        {
+            goalLine[i].anchoredPosition = new Vector2(0, GetYByScore(goalScore[i]));
+            goalLine[i].GetComponentInChildren<Text>().text = goalScore[i].ToString();
+        }
+        bestScore = score;
+        SetGraph();
+    }
+
+    public void SetGraph()
+    {
+        float width = graphRect.rect.width;
+        List<Vector2> list = new List<Vector2>();
+
+        for(int i = 0; i <= 30; i++)
+        {
+            list.Add(new Vector2(width / 30 * i, GetYByScore(scoreHistory[i])));
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            goalLine[i].GetComponent<UILineRenderer>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
+            goalLine[i].GetComponentInChildren<Text>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
+            starImage[i].sprite = (goalScore[i] <= bestScore) ? starSprite[1] : starSprite[0];
+        }
+        bestLine.anchoredPosition = new Vector2(0, GetYByScore(bestScore));
+        bestLine.GetComponentInChildren<Text>().text = bestScore.ToString();
+        scoreLine.Points = list.ToArray();
+    }
+
+    float GetYByScore(int score)
+    {
+        return graphRect.rect.height * score / ceilingScore;
     }
 
     public void KillScore(GameObject enemy)
@@ -78,5 +142,11 @@ public class ScoreManager : MonoBehaviour
     public void ScoreNotice(int scoreDelta)
     {
         Debug.Log("Notice : " + scoreDelta);
+    }
+
+    public string StringByTime(float time)
+    {
+        int _time = Mathf.FloorToInt(time);
+        return (_time / 60) + ":" + string.Format("{0:D2}", (_time % 60)); 
     }
 }
