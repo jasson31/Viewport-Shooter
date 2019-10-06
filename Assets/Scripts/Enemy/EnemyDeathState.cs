@@ -7,7 +7,9 @@ public class EnemyDeathState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().KillScore(animator.gameObject);    
+        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().KillScore(animator.gameObject);
+        Destroy(animator.GetComponent<Collider>());
+        Destroy(animator.GetComponent<Rigidbody>());
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
