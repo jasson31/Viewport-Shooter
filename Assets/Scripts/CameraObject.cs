@@ -8,6 +8,7 @@ public class CameraObject : MonoBehaviour
 
     public bool IsVisible(GameObject meshObject, GameObject colliderObject, float yOffset = 0)
     {
+        if (CameraManager.inst.currentCamera == 0 && colliderObject == PlayerController.inst.gameObject) return false;
         bool onScreen = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), meshObject.GetComponent<Renderer>().bounds);
         if (onScreen)
         {
