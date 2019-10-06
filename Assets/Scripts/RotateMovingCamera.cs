@@ -7,7 +7,7 @@ public class RotateMovingCamera : MonoBehaviour
     GameObject player;
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = PlayerController.inst.gameObject;
     }
 
     void Update()

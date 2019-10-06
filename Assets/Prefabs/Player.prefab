@@ -1200,10 +1200,11 @@ MonoBehaviour:
   firePoint: {fileID: 6190772955180507525}
   fpsGun: {fileID: 8643130408800167095}
   tpsGun: {fileID: 8643130408348540138}
-  headMesh: {fileID: 4893561952489224285}
   bodyMesh: {fileID: 8706325498172689612}
+  headMesh: {fileID: 4893561952489224285}
   fpsMuzzleFlash: {fileID: 8104122397632713466}
   tpsMuzzleFlash: {fileID: 4188255503734327097}
+  hitUI: {fileID: 0}
   speed: 10
   yVelocity: 0
   gravity: -20

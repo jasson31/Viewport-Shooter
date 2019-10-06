@@ -1,18 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : SingletonBehaviour<PlayerController>
 {
     public GameObject firePoint, fpsGun, tpsGun;
-    public GameObject headMesh, bodyMesh;
+    public GameObject bodyMesh, headMesh;
     public ParticleSystem fpsMuzzleFlash, tpsMuzzleFlash;
+    public RawImage hitUI;
     public float speed = 10, yVelocity = 0, gravity = -20;
     CharacterController characterController = null;
     Animator playerAnimator, tpsGunAnimator, fpsGunAnimator;
     Camera mainCamera = null;
     float rotationX = 0, rotationY = 0, sensitivity = 100, keyInputX, keyInputZ;
 
+    public IEnumerator TurnHitUIOn()
+    {
+        float duration = 0.05f, smoothness = 0.01f;
+        float progress = 0, diff = smoothness / duration;
+        Color curCol = hitUI.color;
+        curCol.a = 0.4f;
+        while (progress < 1)
+        {
+            hitUI.color = Color.Lerp(hitUI.color, curCol, progress);
+            progress += diff;
+            yield return new WaitForSeconds(smoothness);
+        }
+        progress = 0;
+        curCol.a = 0;
+        while (progress < 1)
+        {
+            hitUI.color = Color.Lerp(hitUI.color, curCol, progress);
+            progress += diff;
+            yield return new WaitForSeconds(smoothness);
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {

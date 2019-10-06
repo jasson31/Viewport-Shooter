@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
+    public void Attack()
+    {
+        PlayerController.inst.StartCoroutine(PlayerController.inst.TurnHitUIOn());
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Floor")
