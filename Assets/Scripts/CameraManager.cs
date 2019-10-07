@@ -46,7 +46,16 @@ public class CameraManager : SingletonBehaviour<CameraManager>
         else if (Input.GetKeyDown(KeyCode.Alpha5)) ChangeCamera(4);
         else if (Input.GetKeyDown(KeyCode.Alpha6)) ChangeCamera(5);
 
-        Camera current = cameraObjects[1].camera;
-        Gizmos.DrawFrustum(current.transform.position, current.fieldOfView, current.farClipPlane, current.nearClipPlane, current.aspect);
+        Camera camera = cameraObjects[currentCamera].camera;
+        //Gizmos.DrawFrustum(camera.transform.position, camera.fieldOfView, camera.farClipPlane, camera.nearClipPlane, camera.aspect);
+
+        Vector3[] frustumCorners = new Vector3[4];
+        camera.CalculateFrustumCorners(new Rect(0, 0, 1, 1), camera.farClipPlane, Camera.MonoOrStereoscopicEye.Mono, frustumCorners);
+
+        for (int i = 0; i < 4; i++)
+        {
+            var worldSpaceCorner = camera.transform.TransformVector(frustumCorners[i]);
+            Debug.DrawRay(camera.transform.position, worldSpaceCorner, Color.blue);
+        }
     }
 }
