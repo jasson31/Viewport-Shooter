@@ -22,6 +22,8 @@ public class CameraManager : SingletonBehaviour<CameraManager>
     public float iconMaxDist;
     public Camera mainCam;
 
+    public AudioSource playerAS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,10 @@ public class CameraManager : SingletonBehaviour<CameraManager>
         broadcastScreen.texture = cameraObjects[currentCamera].camera.targetTexture;
         cameraObjects[currentCamera].enabled = true;
         cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconOnSprite[i];
+        playerAS.PlayOneShot(playerAS.clip);
+
+        AudioSource camAS = cameraObjects[currentCamera].GetComponent<AudioSource>();
+        if (currentCamera > 0) camAS.Play();
     }
 
     // Update is called once per frame
