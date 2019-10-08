@@ -39,17 +39,16 @@ public class CameraManager : SingletonBehaviour<CameraManager>
             cameraIcons[i] = Instantiate(cameraIconPrefab, canvas);
             cameraIcons[i].GetComponent<Image>().sprite = cameraIconSprite[i];
         }
-
         ChangeCamera(0);
     }
 
     void ChangeCamera(int i)
     {
-        cameraObjects[currentCamera].enabled = false;
+        cameraObjects[currentCamera].ActivateCamera(false);
         cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconSprite[currentCamera];
         currentCamera = i;
         broadcastScreen.texture = cameraObjects[currentCamera].camera.targetTexture;
-        cameraObjects[currentCamera].enabled = true;
+        cameraObjects[currentCamera].ActivateCamera(true);
         cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconOnSprite[i];
     }
 
