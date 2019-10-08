@@ -850,9 +850,13 @@ MonoBehaviour:
   - {fileID: 1891516731}
   - {fileID: 1613961845}
   - {fileID: 206044801}
+  starParticle: {fileID: 792329919457386173, guid: bde09fd3624fe56408eff1e6a7644d2d,
+    type: 3}
   starSprite:
   - {fileID: 21300000, guid: 94c56bbcc0978ff468ddf8b850821706, type: 3}
   - {fileID: 21300000, guid: 3062c600781d4234a9624acd56e89c45, type: 3}
+  starSound: {fileID: 8300000, guid: 593f37acb21d9024e913bc4cb23bf9ac, type: 3}
+  playerAS: {fileID: 905652946}
   ceilingScore: 7500
   cameraManager: {fileID: 281461887}
   player: {fileID: 243042047}
