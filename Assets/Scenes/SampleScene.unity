@@ -352,6 +352,20 @@ MonoBehaviour:
   - {fileID: 65634746}
   - {fileID: 564222051}
   currentCamera: 0
+  cameraIconPrefab: {fileID: 3872670048564389835, guid: b3ac41d4c80503946878a026b9f03dfc,
+    type: 3}
+  canvas: {fileID: 1041746749}
+  cameraIconSprite:
+  - {fileID: 1440727613798183725, guid: 3f821f595ee4ff84183f430b78fd5819, type: 3}
+  - {fileID: 6363377569502825332, guid: 3f821f595ee4ff84183f430b78fd5819, type: 3}
+  - {fileID: 3254398910671650765, guid: 3f821f595ee4ff84183f430b78fd5819, type: 3}
+  - {fileID: -5119037530530923563, guid: 3f821f595ee4ff84183f430b78fd5819, type: 3}
+  - {fileID: -8711102672119230891, guid: 3f821f595ee4ff84183f430b78fd5819, type: 3}
+  - {fileID: 6239838061486260057, guid: 3f821f595ee4ff84183f430b78fd5819, type: 3}
+  iconMinSize: 40
+  iconMaxSize: 80
+  iconMaxDist: 50
+  mainCam: {fileID: 410977522}
 --- !u!4 &281461888
 Transform:
   m_ObjectHideFlags: 0
@@ -670,6 +684,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &410977522 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5176482695643323545, guid: c987e7763d4daa74096f66934a875b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 1407016014835251094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &413636497
 GameObject:
   m_ObjectHideFlags: 0

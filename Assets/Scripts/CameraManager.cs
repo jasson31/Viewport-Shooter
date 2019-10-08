@@ -12,6 +12,16 @@ public class CameraManager : SingletonBehaviour<CameraManager>
 
     RenderTexture[] renderTextures;
 
+    public GameObject cameraIconPrefab;
+    public Transform canvas;
+    private GameObject[] cameraIcons;
+    public Sprite[] cameraIconSprite;
+    public Sprite[] cameraIconOnSprite;
+    public float iconMinSize;
+    public float iconMaxSize;
+    public float iconMaxDist;
+    public Camera mainCam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,15 +32,25 @@ public class CameraManager : SingletonBehaviour<CameraManager>
             cameraObjects[i].camera.targetTexture = renderTextures[i];
             //cameraObjects[i].enabled = false;
         }
+
+        cameraIcons = new GameObject[6];
+        for(int i = 0; i < 6; i++)
+        {
+            cameraIcons[i] = Instantiate(cameraIconPrefab, canvas);
+            cameraIcons[i].GetComponent<Image>().sprite = cameraIconSprite[i];
+        }
+
         ChangeCamera(0);
     }
 
     void ChangeCamera(int i)
     {
         cameraObjects[currentCamera].enabled = false;
+        cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconSprite[currentCamera];
         currentCamera = i;
         broadcastScreen.texture = cameraObjects[currentCamera].camera.targetTexture;
         cameraObjects[currentCamera].enabled = true;
+        cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconOnSprite[i];
     }
 
     // Update is called once per frame
@@ -48,5 +68,27 @@ public class CameraManager : SingletonBehaviour<CameraManager>
 
         Camera current = cameraObjects[1].camera;
         Gizmos.DrawFrustum(current.transform.position, current.fieldOfView, current.farClipPlane, current.nearClipPlane, current.aspect);
+        DrawCameraIcon();
+    }
+
+    void DrawCameraIcon()
+    {
+        for(int i = 1; i < 6; i++)
+        {
+            float dist = Vector3.Distance(cameraObjects[i].transform.position, mainCam.transform.position);
+            Vector3 screenPoint = mainCam.WorldToViewportPoint(cameraObjects[i].transform.position);
+            bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+            if (dist <= iconMaxDist && onScreen)
+            {
+                float size = Mathf.Lerp(iconMinSize, iconMaxSize, 1 - dist / iconMaxDist);
+                cameraIcons[i].GetComponent<Image>().color = new Color(1, 1, 1, 1 - dist / iconMaxDist);
+                cameraIcons[i].GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
+                cameraIcons[i].GetComponent<RectTransform>().position = mainCam.WorldToScreenPoint(cameraObjects[i].transform.position);
+            }
+            else
+            {
+                cameraIcons[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            }
+        }
     }
 }
