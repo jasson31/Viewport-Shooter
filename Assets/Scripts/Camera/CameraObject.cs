@@ -29,8 +29,7 @@ public class CameraObject : MonoBehaviour
 
     public void ActivateCamera(bool active)
     {
-        sightVisualization.SetActive(active);
-        enabled = active;
+        gameObject.SetActive(active);
     }
 
 
@@ -48,6 +47,6 @@ public class CameraObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

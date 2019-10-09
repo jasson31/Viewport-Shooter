@@ -10,8 +10,6 @@ public class CameraManager : SingletonBehaviour<CameraManager>
     public CameraObject[] cameraObjects;
     public int currentCamera;
 
-    RenderTexture[] renderTextures;
-
     public GameObject cameraIconPrefab;
     public Transform canvas;
     private GameObject[] cameraIcons;
@@ -25,17 +23,10 @@ public class CameraManager : SingletonBehaviour<CameraManager>
     // Start is called before the first frame update
     void Start()
     {
-        renderTextures = new RenderTexture[6];
-        for (int i = 0; i < 6; i++)
-        {
-            renderTextures[i] = new RenderTexture(renderTexture);
-            cameraObjects[i].camera.targetTexture = renderTextures[i];
-            //cameraObjects[i].enabled = false;
-        }
-
         cameraIcons = new GameObject[6];
         for(int i = 0; i < 6; i++)
         {
+            cameraObjects[i].camera.targetTexture = renderTexture;
             cameraIcons[i] = Instantiate(cameraIconPrefab, canvas);
             cameraIcons[i].GetComponent<Image>().sprite = cameraIconSprite[i];
         }
@@ -47,7 +38,6 @@ public class CameraManager : SingletonBehaviour<CameraManager>
         cameraObjects[currentCamera].ActivateCamera(false);
         cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconSprite[currentCamera];
         currentCamera = i;
-        broadcastScreen.texture = cameraObjects[currentCamera].camera.targetTexture;
         cameraObjects[currentCamera].ActivateCamera(true);
         cameraIcons[currentCamera].GetComponent<Image>().sprite = cameraIconOnSprite[i];
     }
@@ -72,8 +62,6 @@ public class CameraManager : SingletonBehaviour<CameraManager>
         camera.CalculateFrustumCorners(new Rect(0, 0, 1, 1), camera.farClipPlane, Camera.MonoOrStereoscopicEye.Mono, frustumCorners);
         frustumCorners[4] = frustumCorners[0] + frustumCorners[1];
         frustumCorners[5] = frustumCorners[2] + frustumCorners[3];
-        Debug.Log(frustumCorners[4]);
-        Debug.Log(frustumCorners[5]);
 
         for (int i = 4; i < 6; i++)
         {
