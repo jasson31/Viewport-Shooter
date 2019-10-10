@@ -15,6 +15,8 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     Camera mainCamera = null;
     float rotationX = 0, rotationY = 0, sensitivity = 100, keyInputX, keyInputZ;
 
+    public AudioSource gunShotAS;
+
     public IEnumerator TurnHitUIOn()
     {
         float duration = 0.05f, smoothness = 0.01f;
@@ -98,6 +100,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
             fpsMuzzleFlash.Play();
             fpsGunAnimator.SetTrigger("Fire");
             tpsGunAnimator.SetTrigger("Fire");
+            gunShotAS.PlayOneShot(gunShotAS.clip);
         }
     }
 }

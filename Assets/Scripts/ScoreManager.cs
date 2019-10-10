@@ -12,8 +12,11 @@ public class ScoreManager : MonoBehaviour
     public Color enabledStar;
     public Color disabledStar;
     public Image[] starImage;
+    public GameObject starParticle;
 
     public Sprite[] starSprite;
+    public AudioClip starSound;
+    public AudioSource playerAS;
 
     public int ceilingScore;
 
@@ -88,7 +91,7 @@ public class ScoreManager : MonoBehaviour
         for (int i = 0; i <= 30; i++) scoreHistory.Add(score);
         for(int i = 0; i<3; i++)
         {
-            goalLine[i].anchoredPosition = new Vector2(0, GetYByScore(goalScore[i]));
+            starImage[i].sprite = starSprite[0];
             goalLine[i].GetComponentInChildren<Text>().text = goalScore[i].ToString();
         }
         bestScore = score;
@@ -100,15 +103,23 @@ public class ScoreManager : MonoBehaviour
         float width = graphRect.rect.width;
         List<Vector2> list = new List<Vector2>();
 
+        ceilingScore = bestScore + 1000;
         for(int i = 0; i <= 30; i++)
         {
             list.Add(new Vector2(width / 30 * i, GetYByScore(scoreHistory[i])));
         }
         for (int i = 0; i < 3; i++)
         {
+            goalLine[i].gameObject.SetActive(goalScore[i] <= ceilingScore);
+            goalLine[i].anchoredPosition = new Vector2(0, GetYByScore(goalScore[i]));
             goalLine[i].GetComponent<UILineRenderer>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
             goalLine[i].GetComponentInChildren<Text>().color = (goalScore[i] <= bestScore) ? disabledStar : enabledStar;
-            starImage[i].sprite = (goalScore[i] <= bestScore) ? starSprite[1] : starSprite[0];
+            if(starImage[i].sprite == starSprite[0] && goalScore[i] <= bestScore)
+            {
+                starImage[i].sprite = starSprite[1];
+                Instantiate(starParticle, starImage[i].transform.position, Quaternion.identity, starImage[i].transform);
+                playerAS.PlayOneShot(starSound);
+            }
         }
         bestLine.anchoredPosition = new Vector2(0, GetYByScore(bestScore));
         bestLine.GetComponentInChildren<Text>().text = bestScore.ToString();
