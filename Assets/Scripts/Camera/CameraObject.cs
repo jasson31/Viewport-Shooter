@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraObject : MonoBehaviour
 {
     public new Camera camera;
+    public GameObject sightVisualization;
 
     public bool IsVisible(GameObject meshObject, GameObject colliderObject, float yOffset = 0)
     {
@@ -26,21 +27,26 @@ public class CameraObject : MonoBehaviour
         return false;
     }
 
+    public void ActivateCamera(bool active)
+    {
+        gameObject.SetActive(active);
+    }
+
 
     private void Awake()
     {
-
+        //camera.GetComponent<FieldOfView>().viewRadius = camera.fieldOfView * 5 / 3;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
