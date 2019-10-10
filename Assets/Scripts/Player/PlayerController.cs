@@ -17,6 +17,11 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     Camera mainCamera = null;
     float rotationX = 0, rotationY = 0, sensitivity = 100, keyInputX, keyInputZ;
 
+    public void ResetPlayer()
+    {
+        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.rotation = Quaternion.identity;
+    }
     public IEnumerator TurnHitUIOn()
     {
         float duration = 0.05f, smoothness = 0.01f;

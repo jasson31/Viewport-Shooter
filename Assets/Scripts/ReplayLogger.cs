@@ -14,7 +14,6 @@ public class ReplayLogger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         inputQueue = new Queue<PlayerInput>();
     }
 
