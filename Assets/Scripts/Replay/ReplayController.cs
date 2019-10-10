@@ -38,10 +38,6 @@ public class ReplayController : SingletonBehaviour<ReplayController>
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0) && !replaying)
-        {
-            Begin(Time.time);
-        }
         if (replaying)
         {
             if (Time.time - replayStartTime < gameDuration && logger.inputQueue.Count > 0)
