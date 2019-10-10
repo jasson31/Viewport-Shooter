@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : SingletonBehaviour<PlayerController>
 {
+    public PlayerInput input;
+
     public GameObject firePoint, fpsGun, tpsGun;
     public GameObject bodyMesh, headMesh;
     public ParticleSystem fpsMuzzleFlash, tpsMuzzleFlash;
@@ -53,21 +55,21 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     void Update()
     {
         //Player move
-        keyInputX = Input.GetAxis("Horizontal");
-        keyInputZ = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(keyInputX * 0.5f, 0, keyInputZ);
+        /*keyInputX = Input.GetAxis("Horizontal");
+        keyInputZ = Input.GetAxis("Vertical");*/
+        Vector3 direction = new Vector3(input.horizontalInput * 0.5f, 0, input.verticalInput);
         playerAnimator.SetBool("isWalking", direction.magnitude != 0);
         bool forward = false, backward = false, left = false, right = false;
-        if (keyInputZ != 0 || keyInputX != 0)
+        if (input.verticalInput != 0 || input.horizontalInput != 0)
         {
-            if (Mathf.Abs(keyInputZ) > Mathf.Abs(keyInputX))
+            if (Mathf.Abs(input.verticalInput) > Mathf.Abs(input.horizontalInput))
             {
-                if (keyInputZ > 0) forward = true;
+                if (input.verticalInput > 0) forward = true;
                 else backward = true;
             }
             else
             {
-                if (keyInputX > 0) right = true;
+                if (input.horizontalInput > 0) right = true;
                 else left = true;
             }
         }
@@ -81,17 +83,18 @@ public class PlayerController : SingletonBehaviour<PlayerController>
         characterController.Move(direction * Time.deltaTime);
 
         //Camera rotate
-        float mouseMoveValueX = Input.GetAxis("Mouse X");
-        float mouseMoveValueY = Input.GetAxis("Mouse Y");
-        rotationX += mouseMoveValueX * Time.deltaTime * sensitivity;
-        rotationY += mouseMoveValueY * Time.deltaTime * sensitivity;
+        /*float mouseMoveValueX = Input.GetAxis("Mouse X");
+        float mouseMoveValueY = Input.GetAxis("Mouse Y");*/
+        rotationX += input.mouseXInput * Time.deltaTime * sensitivity;
+        rotationY += input.mouseYInput * Time.deltaTime * sensitivity;
         rotationY = Mathf.Clamp(rotationY, -50, 30);
         transform.eulerAngles = new Vector3(0, rotationX, 0);
         mainCamera.transform.eulerAngles = new Vector3(-rotationY, mainCamera.transform.eulerAngles.y, 0);
         playerAnimator.SetFloat("LookAngle", (rotationY + 50) / 80);
 
         //Shoot
-        if(Input.GetMouseButtonDown(0))
+        //if(Input.GetMouseButtonDown(0))
+        if(input.fireInput)
         {
             BulletFactory.inst.MakeBullet(firePoint.transform.position, firePoint.transform.rotation, firePoint.transform.up);
             tpsMuzzleFlash.Play();
