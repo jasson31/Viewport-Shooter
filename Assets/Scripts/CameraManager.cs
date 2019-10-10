@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CameraManager : SingletonBehaviour<CameraManager>
 {
+    public int cameraInput;
+
     public RawImage broadcastScreen;
     public RenderTexture renderTexture;
     public CameraObject[] cameraObjects;
@@ -25,7 +27,7 @@ public class CameraManager : SingletonBehaviour<CameraManager>
         ChangeCamera(0);
     }
 
-    void ChangeCamera(int i)
+    public void ChangeCamera(int i)
     {
         cameraObjects[currentCamera].enabled = false;
         currentCamera = i;
@@ -34,19 +36,9 @@ public class CameraManager : SingletonBehaviour<CameraManager>
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollInput != 0) ChangeCamera((currentCamera + (scrollInput > 0 ? 1 : 5)) % 6);
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)) ChangeCamera(0);
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) ChangeCamera(1);
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) ChangeCamera(2);
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) ChangeCamera(3);
-        else if (Input.GetKeyDown(KeyCode.Alpha5)) ChangeCamera(4);
-        else if (Input.GetKeyDown(KeyCode.Alpha6)) ChangeCamera(5);
-
-        Camera current = cameraObjects[1].camera;
-        Gizmos.DrawFrustum(current.transform.position, current.fieldOfView, current.farClipPlane, current.nearClipPlane, current.aspect);
+        if (cameraInput != currentCamera)
+            ChangeCamera(cameraInput);
     }
 }

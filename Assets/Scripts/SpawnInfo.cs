@@ -15,6 +15,6 @@ public class SpawnInfo : MonoBehaviour
     IEnumerator DelaySpawn()
     {
         yield return new WaitForSeconds(delay);
-        Instantiate(obj, transform.position, Quaternion.identity);
+        Instantiate(obj, transform.position, Quaternion.identity, GameObject.Find("Enemies").transform);
     }
 }

@@ -19,9 +19,12 @@ public class PlayerController : SingletonBehaviour<PlayerController>
 
     public void ResetPlayer()
     {
+        characterController.enabled = false;
+        rotationX = rotationY = 0;
         gameObject.transform.position = Vector3.zero;
-        gameObject.transform.rotation = Quaternion.identity;
+        characterController.enabled = true;
     }
+
     public IEnumerator TurnHitUIOn()
     {
         float duration = 0.05f, smoothness = 0.01f;
@@ -57,11 +60,9 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Player move
-        /*keyInputX = Input.GetAxis("Horizontal");
-        keyInputZ = Input.GetAxis("Vertical");*/
         Vector3 direction = new Vector3(input.horizontalInput * 0.5f, 0, input.verticalInput);
         playerAnimator.SetBool("isWalking", direction.magnitude != 0);
         bool forward = false, backward = false, left = false, right = false;
@@ -88,8 +89,6 @@ public class PlayerController : SingletonBehaviour<PlayerController>
         characterController.Move(direction * Time.deltaTime);
 
         //Camera rotate
-        /*float mouseMoveValueX = Input.GetAxis("Mouse X");
-        float mouseMoveValueY = Input.GetAxis("Mouse Y");*/
         rotationX += input.mouseXInput * Time.deltaTime * sensitivity;
         rotationY += input.mouseYInput * Time.deltaTime * sensitivity;
         rotationY = Mathf.Clamp(rotationY, -50, 30);
@@ -98,7 +97,6 @@ public class PlayerController : SingletonBehaviour<PlayerController>
         playerAnimator.SetFloat("LookAngle", (rotationY + 50) / 80);
 
         //Shoot
-        //if(Input.GetMouseButtonDown(0))
         if(input.fireInput)
         {
             BulletFactory.inst.MakeBullet(firePoint.transform.position, firePoint.transform.rotation, firePoint.transform.up);

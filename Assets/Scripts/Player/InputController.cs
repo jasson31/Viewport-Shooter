@@ -12,15 +12,17 @@ public struct PlayerInput
     public bool fireInput;
     public void ClearInput()
     {
-        horizontalInput = verticalInput = mouseXInput = mouseYInput = cameraInput = 0;
+        horizontalInput = verticalInput = mouseXInput = mouseYInput = 0;
         fireInput = false;
     }
 }
 
 public class InputController : MonoBehaviour
 {
-    public PlayerController playerController;
     public PlayerInput input;
+
+    bool isFixedUpdated = false;
+
     private void Awake()
     {
         input = new PlayerInput();
@@ -28,8 +30,11 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-
-        input.ClearInput();
+        if (isFixedUpdated)
+        {
+            input.ClearInput();
+            isFixedUpdated = false;
+        }
 
         //Player move
         input.horizontalInput = Input.GetAxis("Horizontal");
@@ -40,11 +45,28 @@ public class InputController : MonoBehaviour
         input.mouseYInput = Input.GetAxis("Mouse Y");
 
         input.fireInput = Input.GetMouseButtonDown(0);
-        input.cameraInput = CameraManager.inst.currentCamera;
 
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollInput != 0)
+        {
+            input.cameraInput = (CameraManager.inst.currentCamera + (Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : 5)) % 6;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) input.cameraInput = 0;
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) input.cameraInput = 1;
+            else if (Input.GetKeyDown(KeyCode.Alpha3)) input.cameraInput = 2;
+            else if (Input.GetKeyDown(KeyCode.Alpha4)) input.cameraInput = 3;
+            else if (Input.GetKeyDown(KeyCode.Alpha5)) input.cameraInput = 4;
+            else if (Input.GetKeyDown(KeyCode.Alpha6)) input.cameraInput = 5;
+        }
 
+        PlayerController.inst.input = input;
+        CameraManager.inst.cameraInput = input.cameraInput;
+    }
 
-
-        playerController.input = input;
+    private void FixedUpdate()
+    {
+        isFixedUpdated = true;
     }
 }
