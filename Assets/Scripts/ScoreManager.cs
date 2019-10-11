@@ -103,7 +103,7 @@ public class ScoreManager : MonoBehaviour
         float width = graphRect.rect.width;
         List<Vector2> list = new List<Vector2>();
 
-        ceilingScore = bestScore + 1000;
+        ceilingScore = Mathf.Max(bestScore + 1000, goalScore[0] + 500);
         for(int i = 0; i <= 30; i++)
         {
             list.Add(new Vector2(width / 30 * i, GetYByScore(scoreHistory[i])));
