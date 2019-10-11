@@ -49,6 +49,7 @@ public class ReplayController : SingletonBehaviour<ReplayController>
             else
             {
                 replaying = false;
+                Time.timeScale = 0;
             }
         }
     }
