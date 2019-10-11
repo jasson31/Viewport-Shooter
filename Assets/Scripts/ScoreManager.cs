@@ -34,9 +34,7 @@ public class ScoreManager : MonoBehaviour
     public int decBySec = 10;
     public int decBySecEnd = 5;
     public int decBySecEepty = 50;
-    public int bodyScore = 100;
-    public int playerScore = 100;
-    public int faceScore = 300;
+    public int[] killScores;
 
     public int[] goalScore;
 
@@ -137,19 +135,23 @@ public class ScoreManager : MonoBehaviour
         int increase = 0;
         if (currentCamera.IsVisible(enemy.GetComponent<Enemy>().mesh, enemy, 1.5f))
         {
-            increase += bodyScore;
+            increase++;
         }
         if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f))
         {
-            increase += playerScore;
+            increase++;
         }
         if (currentCamera.IsVisible(player.headMesh, player.gameObject, 1.6f))
         {
-            increase += faceScore;
+            increase++;
         }
 
-        if (increase > 0) ScoreNotice(increase);
-        score += increase;
+        if (increase > 0)
+        {
+            ScoreNotice(killScores[increase - 1]);
+            score += killScores[increase-1];
+        }
+        
     }
 
     public void ScoreNotice(int scoreDelta)
@@ -159,9 +161,19 @@ public class ScoreManager : MonoBehaviour
 
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(0, noticeField.rect.width), Random.Range(0, noticeField.rect.height));
 
-        if (scoreDelta > 0)
+        if (scoreDelta >= killScores[2])
         {
-            text.text = "흥미진진\n+" + scoreDelta;
+            text.text = "완벽처치\n+" + scoreDelta;
+            text.color = posNoticeColor;
+        }
+        else if (scoreDelta >= killScores[1])
+        {
+            text.text = "멋진처치\n+" + scoreDelta;
+            text.color = posNoticeColor;
+        }
+        else if (scoreDelta >= killScores[0])
+        {
+            text.text = "흥미\n+" + scoreDelta;
             text.color = posNoticeColor;
         }
         else
