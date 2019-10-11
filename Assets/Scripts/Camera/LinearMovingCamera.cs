@@ -11,6 +11,14 @@ public class LinearMovingCamera : MonoBehaviour
     float moveLerp = 0f;
     public float moveTerm = 3f;
 
+    public void ResetMovingCamera()
+    {
+        cameras[0].transform.position = startPos[0];
+        cameras[1].transform.position = startPos[1];
+        initiateMove = false;
+        GetComponent<Collider>().enabled = true;
+    }
+
     private void Start()
     {
         startPos = new Vector3[2];

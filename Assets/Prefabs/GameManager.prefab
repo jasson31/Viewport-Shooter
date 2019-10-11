@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayUI: {fileID: 0}
   ResultUI: {fileID: 0}
+  countDownUI: {fileID: 0}
   isGameOver: 0

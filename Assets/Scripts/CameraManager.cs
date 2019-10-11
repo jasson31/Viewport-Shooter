@@ -31,7 +31,7 @@ public class CameraManager : SingletonBehaviour<CameraManager>
         for(int i = 0; i < 6; i++)
         {
             cameraObjects[i].camera.targetTexture = renderTexture;
-            cameraIcons[i] = Instantiate(cameraIconPrefab, canvas);
+            cameraIcons[i] = Instantiate(cameraIconPrefab, canvas.Find("PlayUI"));
             cameraIcons[i].GetComponent<Image>().sprite = cameraIconSprite[i];
         }
         ChangeCamera(0);
