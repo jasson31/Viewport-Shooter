@@ -27,26 +27,15 @@ public class CameraObject : MonoBehaviour
         return false;
     }
 
+    public bool IsFaceVisible()
+    {
+        return (CameraManager.inst.currentCamera != 0 && 
+            Vector3.Angle(GameObject.Find("Player").transform.forward, camera.transform.position - GameObject.Find("Player").transform.position) < 45) ? true : false;
+    }
+
     public void ActivateCamera(bool active)
     {
-        gameObject.SetActive(active);
+        camera.gameObject.SetActive(active);
     }
 
-
-    private void Awake()
-    {
-        //camera.GetComponent<FieldOfView>().viewRadius = camera.fieldOfView * 5 / 3;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

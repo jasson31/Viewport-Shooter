@@ -1222,36 +1222,6 @@ Transform:
   m_Father: {fileID: 6938332721134318638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4162227177132452844
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4104029446237612530}
-  m_Layer: 9
-  m_Name: Face
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4104029446237612530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4162227177132452844}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.052, y: 0.04, z: 0.132}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3924008264268803169}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4237865168034569707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1376,7 @@ MonoBehaviour:
   tpsGun: {fileID: 8643130408348540138}
   bodyMesh: {fileID: 8706325498172689612}
   headMesh: {fileID: 4893561952489224285}
+  headObject: {fileID: 0}
   fpsMuzzleFlash: {fileID: 8104122397632713466}
   tpsMuzzleFlash: {fileID: 4188255503734327097}
   hitUI: {fileID: 0}
@@ -2275,7 +2246,6 @@ Transform:
   - {fileID: 5832636048856211423}
   - {fileID: 6798328052403697365}
   - {fileID: 4310908282864100700}
-  - {fileID: 4104029446237612530}
   m_Father: {fileID: 673359647544191451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 6.1812563, y: -3.3868816, z: 1.7517773}
@@ -3123,15 +3093,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ddaa174d02ded4c9b4f5f92f9c201c, type: 3}
---- !u!198 &4188255503734327097 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2132396828388390860, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2848640764234871029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4188255503748481659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2132396828407788174, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2848640764234871029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4188255503734327097 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2132396828388390860, guid: 91ddaa174d02ded4c9b4f5f92f9c201c,
     type: 3}
   m_PrefabInstance: {fileID: 2848640764234871029}
   m_PrefabAsset: {fileID: 0}
@@ -3455,16 +3425,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3924008264268803169}
     m_Modifications:
-    - target: {fileID: 9218998720824745934, guid: 324496b72938af541becd04f27795108,
-        type: 3}
-      propertyPath: m_Name
-      value: SecurityCam_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9218998720824745934, guid: 324496b72938af541becd04f27795108,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 5308388979758656989, guid: 324496b72938af541becd04f27795108,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3519,6 +3479,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 7.129
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218998720824745934, guid: 324496b72938af541becd04f27795108,
+        type: 3}
+      propertyPath: m_Name
+      value: SecurityCam_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218998720824745934, guid: 324496b72938af541becd04f27795108,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218998720824745934, guid: 324496b72938af541becd04f27795108,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1576934698914182909, guid: 324496b72938af541becd04f27795108,
         type: 3}
