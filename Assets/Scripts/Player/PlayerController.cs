@@ -22,7 +22,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     {
         characterController.enabled = false;
         rotationX = rotationY = 0;
-        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.position = new Vector3(0, 0, 0);
         characterController.enabled = true;
     }
 
@@ -58,6 +58,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
         mainCamera = Camera.main;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ResetPlayer();
     }
 
     // Update is called once per frame
