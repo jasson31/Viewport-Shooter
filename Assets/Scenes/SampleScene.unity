@@ -900,9 +900,7 @@ MonoBehaviour:
   decBySec: 10
   decBySecEnd: 5
   decBySecEepty: 50
-  bodyScore: 30
-  playerScore: 50
-  faceScore: 80
+  killScores: 3c0000005a000000b4000000
   goalScore: b80b00009411000070170000
   missionTime: 100
   noticePrefab: {fileID: 1081414649043694472, guid: b9c80293cf924d342aa90ef93f43a13a,
