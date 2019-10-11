@@ -47,7 +47,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
             yield return new WaitForSeconds(smoothness);
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {

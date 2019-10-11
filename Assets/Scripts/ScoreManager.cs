@@ -143,7 +143,7 @@ public class ScoreManager : MonoBehaviour
         {
             increase += playerScore;
         }
-        if (currentCamera.IsVisible(player.headMesh, player.gameObject, 1.6f))
+        if (currentCamera.IsFaceVisible())
         {
             increase += faceScore;
         }
