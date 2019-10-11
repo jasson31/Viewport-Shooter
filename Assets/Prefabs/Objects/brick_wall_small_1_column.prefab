@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6385782522796002069}
   - component: {fileID: 4382622848585907439}
   - component: {fileID: 1818855110922033238}
-  - component: {fileID: -4691567472824419996}
+  - component: {fileID: -208169367179240476}
   m_Layer: 13
   m_Name: brick_wall_small_1_column
   m_TagString: Untagged
@@ -83,8 +83,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &-4691567472824419996
-BoxCollider:
+--- !u!64 &-208169367179240476
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,9 +93,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 84.109985, y: 302.7092, z: 352.26355}
-  m_Center: {x: 1412.3372, y: 151.06499, z: -1372.8586}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 9202174513017900641, guid: cccbe462f07e62048bb1ccac17e02d08, type: 3}
 --- !u!1 &4867097691897647754
 GameObject:
   m_ObjectHideFlags: 0
