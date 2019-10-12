@@ -11,7 +11,11 @@ public class InitiateEnemySpawn : MonoBehaviour
         foreach (Transform trns in GetComponentsInChildren<Transform>())
         {
             if (trns != transform)
-                Instantiate(enemyObj, trns.position, Quaternion.identity, GameObject.Find("Enemies").transform);
+            {
+                GameObject obj = Instantiate(enemyObj, trns.position, Quaternion.identity, GameObject.Find("Enemies").transform);
+                obj.GetComponent<Enemy>().isInit = true;
+            }
+
         }
     }
     void Start()

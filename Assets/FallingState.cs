@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDeathState : StateMachineBehaviour
+public class FallingState : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameObject.Find("ScoreManager").GetComponent<ScoreManager>().KillScore(animator.gameObject);
-        animator.GetComponent<AudioSource>().PlayOneShot(animator.GetComponent<Enemy>().deadSound);
-        Destroy(animator.GetComponent<Collider>());
-        Destroy(animator.GetComponent<Rigidbody>());
+        if(!animator.GetComponent<Enemy>().isInit)animator.GetComponent<AudioSource>().PlayOneShot(animator.GetComponent<Enemy>().spawnSound, 1.5f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

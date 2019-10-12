@@ -43,6 +43,7 @@ public class ScoreManager : MonoBehaviour
     public float missionTime = 60f;
 
     public GameObject noticePrefab;
+    public GameObject noticeParticle;
     public RectTransform noticeField;
     public Color posNoticeColor;
     public Color negNoticeColor;
@@ -137,7 +138,7 @@ public class ScoreManager : MonoBehaviour
         {
             increase++;
         }
-        if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f))
+        if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f) || cameraManager.currentCamera == 0)
         {
             increase++;
         }
@@ -161,6 +162,11 @@ public class ScoreManager : MonoBehaviour
 
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(0, noticeField.rect.width), Random.Range(0, noticeField.rect.height));
 
+        if(scoreDelta > 0)
+        {
+            GameObject particle = Instantiate(noticeParticle, noticeField);
+            particle.GetComponent<RectTransform>().anchoredPosition = obj.GetComponent<RectTransform>().anchoredPosition;
+        }
         if (scoreDelta >= killScores[2])
         {
             text.text = "완벽처치\n+" + scoreDelta;
