@@ -17,7 +17,10 @@ public class GameManager : SingletonBehaviour<GameManager>
         yield return new WaitForSeconds(2.9f);
         SceneManager.LoadScene("PlayScene");
     }
-
+    public void Restart()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
     public void PlayGame()
     {
         StartCoroutine(CountDown());
@@ -26,7 +29,10 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         isGameOver = true;
         ResultUI.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         ReplayController.inst.Begin(Time.time);
+
     }
 
     // Start is called before the first frame update

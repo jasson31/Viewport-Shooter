@@ -50,6 +50,16 @@ public class ScoreManager : MonoBehaviour
 
     List<int> scoreHistory;
 
+    int killCount;
+    int perKillCount;
+
+    public Text resultScoreText;
+    public Text resultKillText;
+    public Text resultPKillText;
+    public Text resultTimeText;
+    public Image[] resultStarImage;
+
+
     private void Start()
     {
         scoreHistory = new List<int>();
@@ -94,6 +104,8 @@ public class ScoreManager : MonoBehaviour
             goalLine[i].GetComponentInChildren<Text>().text = goalScore[i].ToString();
         }
         bestScore = score;
+        killCount = 0;
+        perKillCount = 0;
         SetGraph();
     }
 
@@ -152,7 +164,11 @@ public class ScoreManager : MonoBehaviour
             ScoreNotice(killScores[increase - 1]);
             score += killScores[increase-1];
         }
-        
+        if (increase == 3)
+        {
+            perKillCount++;
+        }
+        killCount++;
     }
 
     public void ScoreNotice(int scoreDelta)
@@ -188,7 +204,20 @@ public class ScoreManager : MonoBehaviour
             text.color = negNoticeColor;
         }
     }
-
+    public void SetResultUI()
+    {
+        resultScoreText.text = bestScore + " 명";
+        resultKillText.text = killCount + " 회";
+        resultPKillText.text = perKillCount + " 회";
+        resultTimeText.text = StringByTime(playTime);
+        for (int i = 0; i < 3; i++)
+        {
+            if (goalScore[i] <= bestScore)
+            {
+                resultStarImage[i].sprite = starSprite[1];
+            }
+        }
+    }
     public string StringByTime(float time)
     {
         int _time = Mathf.FloorToInt(time);
