@@ -64,6 +64,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     // Update is called once per frame
     void FixedUpdate()
     {
+
         //Player move
         Vector3 direction = new Vector3(input.horizontalInput * 0.5f, 0, input.verticalInput);
         playerAnimator.SetBool("isWalking", direction.magnitude != 0);
@@ -108,5 +109,6 @@ public class PlayerController : SingletonBehaviour<PlayerController>
             tpsGunAnimator.SetTrigger("Fire");
             gunShotAS.PlayOneShot(gunShotAS.clip);
         }
+        GameObject.Find("InputController").GetComponent<InputController>().isFixedUpdated = true;
     }
 }

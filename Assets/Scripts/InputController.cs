@@ -21,7 +21,7 @@ public class InputController : MonoBehaviour
 {
     public PlayerInput input;
 
-    bool isFixedUpdated = false;
+    public bool isFixedUpdated = false;
 
     private void Awake()
     {
@@ -39,14 +39,14 @@ public class InputController : MonoBehaviour
             }
 
             //Player move
-            input.horizontalInput = Input.GetAxis("Horizontal");
-            input.verticalInput = Input.GetAxis("Vertical");
+            input.horizontalInput += Input.GetAxis("Horizontal");
+            input.verticalInput += Input.GetAxis("Vertical");
 
             //Camera rotate
-            input.mouseXInput = Input.GetAxis("Mouse X");
-            input.mouseYInput = Input.GetAxis("Mouse Y");
+            input.mouseXInput += Input.GetAxis("Mouse X");
+            input.mouseYInput += Input.GetAxis("Mouse Y");
 
-            input.fireInput = Input.GetMouseButtonDown(0);
+            input.fireInput |= Input.GetMouseButtonDown(0);
 
             float scrollInput = Input.GetAxis("Mouse ScrollWheel");
             if (scrollInput != 0)
@@ -63,13 +63,8 @@ public class InputController : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.Alpha6)) input.cameraInput = 5;
             }
 
-            PlayerController.inst.input = input;
             CameraManager.inst.cameraInput = input.cameraInput;
+            PlayerController.inst.input = input;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        isFixedUpdated = true;
     }
 }

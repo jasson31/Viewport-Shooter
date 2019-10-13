@@ -817,7 +817,7 @@ MonoBehaviour:
   decBySec: 10
   decBySecEnd: 5
   decBySecEepty: 50
-  killScores: 3c0000005a000000b4000000
+  killScores: 3200000064000000c8000000
   goalScore: b80b00009411000070170000
   missionTime: 100
   noticePrefab: {fileID: 1081414649043694472, guid: b9c80293cf924d342aa90ef93f43a13a,
@@ -1764,35 +1764,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5582790388023110399, guid: 41ae4c08a5aa0ae4f9e334dc31a9a286,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 835598406, guid: 41ae4c08a5aa0ae4f9e334dc31a9a286, type: 3}
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 537243480}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41ae4c08a5aa0ae4f9e334dc31a9a286, type: 3}
---- !u!1 &1431312022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4801032163879259523, guid: bcebca1471976cb4e85c1731a3300762,
-    type: 3}
-  m_PrefabInstance: {fileID: 956912033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1431312023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431312022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2c12dc60011a04684a1b77b57a66d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1482684510 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8924174607334273533, guid: f70b6afdc0cf76e4db37945ea0fd6c59,
