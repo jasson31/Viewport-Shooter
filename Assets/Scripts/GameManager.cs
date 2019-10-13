@@ -32,7 +32,6 @@ public class GameManager : SingletonBehaviour<GameManager>
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         ReplayController.inst.Begin(Time.time);
-
     }
 
     // Start is called before the first frame update
