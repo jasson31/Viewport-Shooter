@@ -67,4 +67,9 @@ public class InputController : MonoBehaviour
             PlayerController.inst.input = input;
         }
     }
+
+    private void FixedUpdate()
+    {
+        
+    }
 }
