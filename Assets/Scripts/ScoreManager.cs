@@ -217,6 +217,7 @@ public class ScoreManager : MonoBehaviour
                 resultStarImage[i].sprite = starSprite[1];
             }
         }
+        ScoreInit();
     }
     public string StringByTime(float time)
     {
