@@ -43,11 +43,22 @@ public class ScoreManager : MonoBehaviour
     public float missionTime = 60f;
 
     public GameObject noticePrefab;
+    public GameObject noticeParticle;
     public RectTransform noticeField;
     public Color posNoticeColor;
     public Color negNoticeColor;
 
     List<int> scoreHistory;
+
+    int killCount;
+    int perKillCount;
+
+    public Text resultScoreText;
+    public Text resultKillText;
+    public Text resultPKillText;
+    public Text resultTimeText;
+    public Image[] resultStarImage;
+
 
     private void Start()
     {
@@ -93,6 +104,8 @@ public class ScoreManager : MonoBehaviour
             goalLine[i].GetComponentInChildren<Text>().text = goalScore[i].ToString();
         }
         bestScore = score;
+        killCount = 0;
+        perKillCount = 0;
         SetGraph();
     }
 
@@ -137,7 +150,7 @@ public class ScoreManager : MonoBehaviour
         {
             increase++;
         }
-        if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f))
+        if (currentCamera.IsVisible(player.bodyMesh, player.gameObject, 1.0f) || cameraManager.currentCamera == 0)
         {
             increase++;
         }
@@ -151,7 +164,11 @@ public class ScoreManager : MonoBehaviour
             ScoreNotice(killScores[increase - 1]);
             score += killScores[increase-1];
         }
-        
+        if (increase == 3)
+        {
+            perKillCount++;
+        }
+        killCount++;
     }
 
     public void ScoreNotice(int scoreDelta)
@@ -161,6 +178,11 @@ public class ScoreManager : MonoBehaviour
 
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(0, noticeField.rect.width), Random.Range(0, noticeField.rect.height));
 
+        if(scoreDelta > 0)
+        {
+            GameObject particle = Instantiate(noticeParticle, noticeField);
+            particle.GetComponent<RectTransform>().anchoredPosition = obj.GetComponent<RectTransform>().anchoredPosition;
+        }
         if (scoreDelta >= killScores[2])
         {
             text.text = "완벽처치\n+" + scoreDelta;
@@ -182,7 +204,21 @@ public class ScoreManager : MonoBehaviour
             text.color = negNoticeColor;
         }
     }
-
+    public void SetResultUI()
+    {
+        resultScoreText.text = bestScore + " 명";
+        resultKillText.text = killCount + " 회";
+        resultPKillText.text = perKillCount + " 회";
+        resultTimeText.text = StringByTime(playTime);
+        for (int i = 0; i < 3; i++)
+        {
+            if (goalScore[i] <= bestScore)
+            {
+                resultStarImage[i].sprite = starSprite[1];
+            }
+        }
+        ScoreInit();
+    }
     public string StringByTime(float time)
     {
         int _time = Mathf.FloorToInt(time);

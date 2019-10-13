@@ -32,8 +32,8 @@ public class ReplayController : SingletonBehaviour<ReplayController>
         replaying = true;
         gameDuration = _gameDuration;
         
-        CameraManager.inst.broadcastScreen.rectTransform.anchoredPosition = new Vector3(-960, 0);
-        CameraManager.inst.broadcastScreen.rectTransform.sizeDelta = new Vector3(1920, 1080);
+        CameraManager.inst.broadcastScreen.rectTransform.anchoredPosition = new Vector3(-1215, -22);
+        CameraManager.inst.broadcastScreen.rectTransform.sizeDelta = new Vector3(1280, 720);
 
         replayStartTime = Time.time;
     }

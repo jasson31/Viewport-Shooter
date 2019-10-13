@@ -8,6 +8,7 @@ public class EnemyDeathState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GameObject.Find("ScoreManager").GetComponent<ScoreManager>().KillScore(animator.gameObject);
+        animator.GetComponent<AudioSource>().PlayOneShot(animator.GetComponent<Enemy>().deadSound);
         Destroy(animator.GetComponent<Collider>());
         Destroy(animator.GetComponent<Rigidbody>());
     }

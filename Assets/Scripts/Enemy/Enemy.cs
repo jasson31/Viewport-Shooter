@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     public bool isDead = false;
     Animator animator;
 
+    public AudioClip spawnSound;
+    public AudioClip deadSound;
+    public bool isInit;
+
     public void Die()
     {
         isDead = true;

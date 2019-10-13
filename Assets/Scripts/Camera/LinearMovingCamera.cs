@@ -16,6 +16,7 @@ public class LinearMovingCamera : MonoBehaviour
         cameras[0].transform.position = startPos[0];
         cameras[1].transform.position = startPos[1];
         initiateMove = false;
+        moveLerp = 0;
         GetComponent<Collider>().enabled = true;
     }
 

@@ -11,7 +11,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     public GameObject bodyMesh, headMesh;
     public ParticleSystem fpsMuzzleFlash, tpsMuzzleFlash;
     public RawImage hitUI;
-    public float speed = 10, yVelocity = 0, gravity = -20;
+    public float speed = 5, yVelocity = 0, gravity = -20;
     CharacterController characterController = null;
     Animator playerAnimator, tpsGunAnimator, fpsGunAnimator;
     Camera mainCamera = null;
@@ -64,6 +64,7 @@ public class PlayerController : SingletonBehaviour<PlayerController>
     // Update is called once per frame
     void FixedUpdate()
     {
+
         //Player move
         Vector3 direction = new Vector3(input.horizontalInput * 0.5f, 0, input.verticalInput);
         playerAnimator.SetBool("isWalking", direction.magnitude != 0);
@@ -85,14 +86,14 @@ public class PlayerController : SingletonBehaviour<PlayerController>
         playerAnimator.SetBool("isWalkingBackward", backward);
         playerAnimator.SetBool("isWalkingLeft", left);
         playerAnimator.SetBool("isWalkingRight", right);
-        characterController.Move(transform.TransformDirection(direction) * speed * Time.deltaTime);
-        yVelocity += gravity * Time.deltaTime;
+        characterController.Move(transform.TransformDirection(direction) * speed * Time.fixedDeltaTime);
+        yVelocity += gravity * Time.fixedDeltaTime;
         direction.y = yVelocity;
-        characterController.Move(direction * Time.deltaTime);
+        characterController.Move(direction * Time.fixedDeltaTime);
 
         //Camera rotate
-        rotationX += input.mouseXInput * Time.deltaTime * sensitivity;
-        rotationY += input.mouseYInput * Time.deltaTime * sensitivity;
+        rotationX += input.mouseXInput * Time.fixedDeltaTime * sensitivity;
+        rotationY += input.mouseYInput * Time.fixedDeltaTime * sensitivity;
         rotationY = Mathf.Clamp(rotationY, -50, 30);
         transform.eulerAngles = new Vector3(0, rotationX, 0);
         mainCamera.transform.eulerAngles = new Vector3(-rotationY, mainCamera.transform.eulerAngles.y, 0);
@@ -108,5 +109,6 @@ public class PlayerController : SingletonBehaviour<PlayerController>
             tpsGunAnimator.SetTrigger("Fire");
             gunShotAS.PlayOneShot(gunShotAS.clip);
         }
+        GameObject.Find("InputController").GetComponent<InputController>().isFixedUpdated = true;
     }
 }
