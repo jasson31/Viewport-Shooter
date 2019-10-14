@@ -9,6 +9,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     public GameObject ResultUI;
     public GameObject countDownUI;
 
+    private float gameStartTime;
     public bool isGameOver = false;
 
     public IEnumerator CountDown()
@@ -20,6 +21,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     public void Restart()
     {
         SceneManager.LoadScene("StartScene");
+        Time.timeScale = 1;
     }
     public void PlayGame()
     {
@@ -31,7 +33,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         ResultUI.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        ReplayController.inst.Begin(Time.time);
+        ReplayController.inst.Begin(Time.time - gameStartTime);
     }
 
     // Start is called before the first frame update
