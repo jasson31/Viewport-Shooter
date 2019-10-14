@@ -42,7 +42,7 @@ public class ReplayController : SingletonBehaviour<ReplayController>
     {
         if (replaying)
         {
-            if (Time.time - replayStartTime < gameDuration && logger.inputQueue.Count > 0)
+            if (Time.time - replayStartTime < gameDuration)
             {
                 PlayerInput temp = logger.inputQueue.Dequeue();
                 PlayerController.inst.input = temp;

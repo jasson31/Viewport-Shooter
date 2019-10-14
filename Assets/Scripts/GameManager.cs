@@ -16,6 +16,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         Instantiate(countDownUI, GameObject.Find("Canvas").transform);
         yield return new WaitForSeconds(2.9f);
+        gameStartTime = Time.time;
         SceneManager.LoadScene("PlayScene");
     }
     public void Restart()
